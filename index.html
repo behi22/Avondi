@@ -4,21 +4,81 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avondi</title>
-    <link rel="stylesheet" href="styles/main.css" />
     <!-- Content Security Policy Meta Tag -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self';"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'sha256-8tnX66uZPQc/x0xPMSjbDfJFOh1ys5rYCZOAvT44Ml0=';"
     />
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <div class="container">
-      <header></header>
-      <main>
-        <div class="container">Hello World</div>
-      </main>
-      <footer></footer>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img
+          src="assets/logos/avondi-logo.png"
+          alt="Avondi Logo"
+          draggable="false"
+        />
+      </div>
+
+      <div class="nav-links">
+        <div class="main-nav">
+          <a href="#">Send a Package</a>
+          <a href="#">Become a Driver</a>
+          <a href="#">Host a Locker</a>
+        </div>
+        <div class="secondary-nav">
+          <a href="#">News & Press</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" aria-label="Open menu">
+        <img src="assets/logos/Hamburger.svg" alt="Menu" draggable="false" />
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <div class="navbar-logo">
+          <img
+            src="assets/logos/avondi-logo.png"
+            alt="Avondi Logo"
+            draggable="false"
+          />
+        </div>
+        <button class="mobile-menu-close" aria-label="Close menu">
+          <img src="assets/logos/X.svg" alt="Close" draggable="false" />
+        </button>
+      </div>
+
+      <div class="mobile-menu-content">
+        <h2>What would you like<br />to learn more about?</h2>
+
+        <div class="mobile-nav-links">
+          <a href="#">Send a Package</a>
+          <a href="#">Become a Driver</a>
+          <a href="#">Host a Locker</a>
+        </div>
+
+        <div class="mobile-menu-footer">
+          <a href="#"
+            >News & Press
+            <img src="assets/logos/Arrow.svg" alt="Arrow" draggable="false"
+          /></a>
+          <a href="#"
+            >Contact
+            <img src="assets/logos/Arrow.svg" alt="Arrow" draggable="false"
+          /></a>
+        </div>
+      </div>
     </div>
+
+    <main>Hello World!</main>
+
     <script type="module" src="scripts/main.js"></script>
   </body>
 </html>

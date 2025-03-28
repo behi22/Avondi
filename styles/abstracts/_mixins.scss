@@ -1,0 +1,28 @@
+@use 'variables' as *;
+
+// Mobile-first approach
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+// Desktop-first approach
+@mixin desktop {
+  @media (min-width: #{$breakpoint-mobile + 1}) {
+    @content;
+  }
+}
+
+// Flex helpers
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

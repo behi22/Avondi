@@ -1,0 +1,20 @@
+// Abstracts
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+@use 'abstracts/typography' as *;
+
+// Components
+@use 'components/navbar' as *;
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  line-height: 1.6;
+}
