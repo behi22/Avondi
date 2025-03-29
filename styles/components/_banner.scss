@@ -2,40 +2,43 @@
 @use '../abstracts/mixins' as *;
 
 .banner {
-  margin-top: 124px;
+  margin-top: 200px;
   padding: 0;
   background: white;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .banner-content {
   display: grid;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 45% 55%;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 0 0 11%;
   align-items: center;
   min-height: 600px;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  overflow: hidden;
+
+  @media (min-width: 1441px) {
+    max-width: 100vw;
+    padding: 0;
+    grid-template-columns: 50% 50%;
+  }
 
   @media (max-width: 1250px) {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 45% 55%;
   }
 
   @media (max-width: 1440px) {
     padding: 0 0 0 8%;
   }
 
-  @media (min-width: 1441px) {
-    padding: 0 0 0 8%;
-  }
-
   @media (min-width: 1550px) {
     padding: 0 0 0 4%;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 55% 45%;
   }
 
   @include mobile {
@@ -43,6 +46,7 @@
     flex-direction: column;
     padding: 0 24px;
     min-height: auto;
+    overflow: visible;
   }
 }
 
@@ -52,6 +56,10 @@
   padding-right: 40px;
   position: relative;
   z-index: 3;
+
+  @media (min-width: 1441px) {
+    margin-left: 12%;
+  }
 
   @include mobile {
     order: 2;
@@ -233,8 +241,9 @@
     -webkit-user-drag: none;
 
     @media (min-width: 1441px) {
-      width: calc(100% + ((100vw - 1440px) / 2));
+      width: calc(100% + ((100vw - 1440px) / 5));
       margin-right: calc((100vw - 1440px) / -2);
+      object-fit: contain;
     }
 
     @media (max-width: 1250px) {
@@ -256,7 +265,7 @@
   bottom: -100px;
   right: 5%;
   width: 200px;
-  z-index: 2;
+  z-index: 10;
   pointer-events: none;
 
   @include mobile {
@@ -278,5 +287,5 @@
   position: relative;
   margin-top: -40px;
   padding-top: 80px;
-  z-index: 1;
+  z-index: 0;
 }

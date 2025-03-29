@@ -1,0 +1,224 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.info-section {
+  background-color: $light-blue;
+  padding: 6rem 5%;
+  margin-top: 2rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  @include mobile {
+    padding: 2rem 24px;
+    margin-top: -2rem;
+  }
+
+  .section-header {
+    max-width: 1440px;
+    margin: 0 auto 4rem;
+    text-align: left;
+    padding: 0 2rem;
+
+    @include mobile {
+      text-align: left;
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: $font-weight-bold;
+      color: $text-color;
+      line-height: 1.2;
+
+      @media (max-width: 1200px) {
+        max-width: 380px;
+      }
+
+      @include mobile {
+        font-size: 2.25rem;
+        max-width: 60%;
+      }
+    }
+
+    .mobile-header {
+      display: none;
+
+      @include mobile {
+        display: block;
+      }
+    }
+
+    .desktop-header {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      margin: 0 -24px;
+      margin-left: 0;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+
+      &.grabbing {
+        cursor: grabbing;
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    user-select: none;
+
+    @include mobile {
+      min-width: 280px;
+      flex: 0 0 85%;
+      background: white;
+      padding: 2rem;
+      scroll-snap-align: start;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-right: 0.5rem;
+
+      p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+      }
+    }
+
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      background-color: $orange-light;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: $font-weight-bold;
+      color: $text-color;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: $font-weight-bold;
+      color: $text-color;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: $text-color;
+      margin: 0;
+    }
+  }
+
+  .mobile-controls {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      gap: 0.25rem;
+      justify-content: flex-end;
+      margin: -5px 0 -1.5rem;
+    }
+
+    button {
+      width: 50px;
+      height: 50px;
+      background-color: $primary-orange;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: $light-blue;
+        transition: transform 0.3s ease;
+        z-index: 0;
+      }
+
+      &.prev-btn::before {
+        right: -100%;
+      }
+
+      &.next-btn::before {
+        left: -100%;
+      }
+
+      &:hover {
+        &.prev-btn::before {
+          transform: translateX(-100%);
+        }
+        &.next-btn::before {
+          transform: translateX(100%);
+        }
+
+        img {
+          filter: brightness(0) saturate(100%) hue-rotate(200deg);
+        }
+      }
+
+      &.active {
+        opacity: 1;
+        cursor: pointer;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) invert(1);
+        position: relative;
+        z-index: 1;
+        transition: filter 0.3s ease;
+      }
+
+      &.prev-btn img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
